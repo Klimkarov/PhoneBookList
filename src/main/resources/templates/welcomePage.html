@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Welcome PhoneBook</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
+	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" 
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<ul class="navbar-nav">
+		<li>
+		<img th:src="@{/images/phonebook.png}" width="100" height="100">
+		</li>&nbsp
+			<li class="nav-item">
+			 
+			<a class="nav-link fas fa-home fa-2x icon-silver" th:href="@{/filter}">PHONEBOOK LIST</a>
+			</li>
+			<li class="nav-item">
+			 
+			<a class="nav-link fas fa-home fa-2x icon-silver" th:href="@{/filter}">FILTERING</a>
+			</li>
+			<li class="nav-item">
+			 
+			<a class="nav-link fas fa-home fa-2x icon-silver" th:href="@{/}">SORTING</a>
+			</li>
+			</div>
+	</nav><br><br>
+	
+	<div class="container my-2"> 
+<a th:href = "@{/}" class="btn btn-primary btn-sm mb-3"> Go to Sorting</a>
+		</div><br>
+		
+		<div class="container my-2">
+		<h4>With this filter you can find any category, just write the your word or number</h4>
+		</div>
+		<br>
+		
+		<div class="container my-2">
+		<div>
+		<form th:action="@{/filter}">
+		<h5>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGet By Category:<!--<input type="text" name="keyword" th:value= "${keyword}" required placeholder="keyword" class="form-control mb-2 col-2"> -->
+	                <input type="text" name="keyword" th:value= "${keyword}" required />&nbsp;
+		                 <button type="submit" class="btn btn-info col-2">Search</button>&nbsp;
+		          <!--         <input type="submit" value="Search" /> -->
+		          <!--         <input type="button" value="Clear" onclick = "clearCategory" /> -->
+		                <a th:href="@{/filter}" class="btn btn-primary">Show all list</a>
+		               
+		          </h5>       
+		
+		</form>
+		
+		</div><br>
+		
+		
+
+		<a th:href="@{/showNewPhoneBookPage}" class="btn btn-primary">Add new Phone</a>
+		<!-- Button for new Employee -->
+<div>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th><a >Id</a></th>
+					<th><a >First Name</a></th>
+					<th><a >Last Name</a></th>
+					<th><a >Address</a></th>
+			    	<th><a >Phone</a></th> 
+				</tr>
+
+			</thead>
+			<tbody>
+				<tr th:each="phonebook : ${listPB}">
+					<td th:text="${phonebook.id} "></td>
+					<td th:text="${phonebook.firstName} "></td>
+					<td th:text="${phonebook.lastName} "></td>
+					<td th:text="${phonebook.address} "></td>
+					<td th:text="${phonebook.phone} "></td>
+			
+					
+					<td> 
+						<a th:href="@{/deletePhoneBook/{id}(id=${phonebook.id})}" class="btn btn-primary">Delete</a>
+					</td>
+					
+				</tr>
+			</tbody>
+
+		</table>
+		</div>
+		</div>
+		
+		
+
+
+	
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+	
+</body>
+</html>

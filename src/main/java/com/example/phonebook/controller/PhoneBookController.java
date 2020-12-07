@@ -45,6 +45,7 @@ public class PhoneBookController {
 		model.addAttribute("listPB", listPB);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("phonebook", phonebook);
+	
 		
 
 		return ("welcomePage");

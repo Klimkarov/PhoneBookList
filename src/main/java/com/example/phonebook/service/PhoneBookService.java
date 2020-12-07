@@ -21,6 +21,7 @@ public class PhoneBookService implements PnoneBookInterface {
 	public List<PhoneBook> listAll(String keyword){
 		if(keyword != null) {
 			return pbRepo.findAll(keyword);
+		}else {
 		}
 		return pbRepo.findAll();
 	}
